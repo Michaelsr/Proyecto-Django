@@ -1,0 +1,2 @@
+version de python 3.5.1
+version de django 1.10.3
