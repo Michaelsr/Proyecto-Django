@@ -1,2 +1,58 @@
 version de python 3.5.1
 version de django 1.10.3
+
+
+
+from django.db import models
+from proyecto.Apps.Administracion.models import Trabajador
+from proyecto.Apps.Almacen.models import Salida
+
+# Create your models here.
+
+#Agregar Urgente
+#models.ManyTomanyField(Stock)
+
+
+class StockAlmacen(models.Model):
+	Producto = models.ForeignKey(Salida, null= False, blank=False, on_delete=models.CASCADE)
+	Precio = models.CharField(max_length=5)
+
+
+	def StockAlmacen(self):
+        cadena = "{0}: S/.{1}"
+        return cadena.format(self.Producto.Producto, self.Precio)
+
+    def __str__(self):
+        return self.StockAlmacen()
+
+
+
+
+class Stock(models.Model):
+	Producto = models.CharField(max_length=100)
+	Precio = models.CharField(max_length=5)
+
+
+	def Stock(self):
+        cadena = "{0}: S/.{1}"
+        return cadena.format(self.Producto, self.Precio)
+
+    def __str__(self):
+        return self.Stock()
+		
+
+
+
+
+class VentaFactura (models.Model):
+    StockAlmacen = models.ForeignKey(StockAlmacen, null=False, blank=False, on_delete=models.CASCADE)
+    Stock = models.ForeignKey(Stock, null=False, blank=False, on_delete=models.CASCADE)
+    Vendedor = models.ForeignKey(Trabajador, null=False, blank=False, on_delete=models.CASCADE)
+    FechaVenta = models.DateField()
+
+    def VentaFactura(self):
+        cadena = "{0} : {1} : {2} : {3}"
+        return cadena.format(self.StockAlmacen.Producto, self.Stock.Producto, self.Vendedor.Nombre, self.FechaVenta)
+
+    def __str__(self):
+        return self.VentaFactura()
