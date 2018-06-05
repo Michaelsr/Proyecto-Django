@@ -1,10 +1,14 @@
 from django.db import models
 from proyecto.Apps.Administracion.models import Trabajador
+from proyecto.Apps.Almacen.models import Salida
 
 # Create your models here.
 
+
+
 class VentaFactura (models.Model):
-    Producto = models.CharField(max_length=35)
+    Producto = models.ManyToManyField(Salida)
+    #Producto = models.CharField(Salida, null=False, blank=False, on_delete=models.CASCADE)
     Precio = models.PositiveSmallIntegerField()
     Vendedor = models.ForeignKey(Trabajador, null=False, blank=False, on_delete=models.CASCADE)
     FechaVenta = models.DateField()
@@ -15,4 +19,3 @@ class VentaFactura (models.Model):
 
     def __str__(self):
         return self.VentaFactura()
-
