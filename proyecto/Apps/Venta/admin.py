@@ -3,3 +3,4 @@ from proyecto.Apps.Venta.models import *
 # Register your models here.
 
 admin.site.register(VentaFactura)
+admin.site.register(Cliente)

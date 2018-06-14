@@ -30,22 +30,26 @@ class Producto(models.Model):
 
     def __str__(self):
 
-        return "{0} ({1})".format(self.NombreProducto, self.Unidad)
+        return "{0}".format(self.NombreProducto)
 
 class Ingreso(models.Model):
     Proveedor = models.ForeignKey(Proveedor, null=False, blank=False, on_delete=models.CASCADE)
     Producto = models.ForeignKey(Producto, null=False, blank=False, on_delete=models.CASCADE)
+    PrecioCompra = models.PositiveSmallIntegerField()
     FechaIngreso = models.DateTimeField(auto_now_add=False)
 
     def __str__(self):
-        cadena = "Proveedor: {0} >>> Producto: {1} >>> Unidad: ({2}) >>> Fecha {3} "
-        return cadena.format(self.Proveedor.NombreProveedor, self.Producto.NombreProducto, self.Producto.Unidad, self.FechaIngreso)
+        cadena = "Proveedor: {0}, Producto: {1}, Compra {2}"
+        return cadena.format(self.Proveedor.NombreProveedor, self.Producto.NombreProducto, self.PrecioCompra)
 
 
 class Salida(models.Model):
     Producto = models.ForeignKey(Producto, null=False, blank=False, on_delete=models.CASCADE)
+    PrecioCom = models.ForeignKey(Ingreso, null=False, blank=False, on_delete=models.CASCADE)
+    PrecioVentaCaja = models.PositiveSmallIntegerField()
+    PrecioVentaUnidad = models.PositiveSmallIntegerField()
     FechaSalida = models.DateTimeField(auto_now_add=False)
 
     def __str__(self):
-        cadena = "{0}, {1}"
-        return cadena.format(self.Producto.NombreProducto, self.FechaSalida)
+        cadena = "{0}, {1}, caja S/. {2}, unidad S/. {3}"
+        return cadena.format(self.Producto.NombreProducto, self.PrecioCom.PrecioCompra, self.PrecioVentaCaja, self.PrecioVentaUnidad)
