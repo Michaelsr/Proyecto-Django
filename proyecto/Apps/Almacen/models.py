@@ -36,7 +36,7 @@ class Ingreso(models.Model):
     Proveedor = models.ForeignKey(Proveedor, null=False, blank=False, on_delete=models.CASCADE)
     Producto = models.ForeignKey(Producto, null=False, blank=False, on_delete=models.CASCADE)
     PrecioCompra = models.PositiveSmallIntegerField()
-    FechaIngreso = models.DateTimeField(auto_now_add=False)
+    FechaIngreso = models.DateField(auto_now_add=False)
 
     def __str__(self):
         cadena = "Proveedor: {0}, Producto: {1}, Compra {2}"

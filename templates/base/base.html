@@ -1,0 +1,94 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        {% block extrahead %}
+        {% endblock %}
+
+        <meta charset="UTF-8">
+
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+        <title>{% block title %} Document {% endblock %}</title>
+    </head>
+    <body>
+
+
+        {% block navbar %}
+            <section class="title">
+		<h1>Menu</h1>
+	</section>
+
+	<nav class="navegacion">
+		<ul class="menu">
+
+			<li class="first-item">
+				<a href="#">
+					<img src="images/home.jpg" alt="" class="imagen">
+					<span class="text-item">Inicio</span>
+					<span class="down-item"></span>
+				</a>
+			</li>
+
+			<li>
+				<a href="{% url 'almacenIndex:almacen_crear' %}">
+					<img src="images/us.jpg" alt="" class="imagen">
+					<span class="text-item">Registrar</span>
+					<span class="down-item"></span>
+				</a>
+			</li>
+
+			<li>
+				<a href="#">
+					<img src="images/servicios.jpg" alt="" class="imagen">
+					<span class="text-item">Servicios</span>
+					<span class="down-item"></span>
+				</a>
+			</li>
+
+			<li>
+				<a href="#">
+					<img src="images/blog.jpg" alt="" class="imagen">
+					<span class="text-item">Blog</span>
+					<span class="down-item"></span>
+				</a>
+			</li>
+
+			<li>
+				<a href="#">
+					<img src="images/web.jpg" alt="" class="imagen">
+					<span class="text-item">La web</span>
+					<span class="down-item"></span>
+				</a>
+			</li>
+
+			<li>
+				<a href="#">
+					<img src="images/contacto.jpg" alt="" class="imagen">
+					<span class="text-item">Contacto</span>
+					<span class="down-item"></span>
+				</a>
+			</li>
+
+		</ul>
+	</nav>
+        {% endblock %}
+        {% include 'base/header.html' %}
+
+        {% block content %}
+        <h4>Bloque de contenido</h4>
+        {% endblock %}
+
+
+        {% block footer %}
+        {% endblock %}
+    </div>
+        <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+        {% block extrajs %}
+        {% endblock %}
+
+
+    </body>
+</html>

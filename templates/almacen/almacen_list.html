@@ -1,0 +1,36 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<td>#</td>
+			<td>Proveedor</td>
+			<td>Producto</td>
+			<td>PrecioCompra</td>
+			<td>FechaIngreso</td>
+		</tr>
+	</thead>
+	<tbody>
+        {% if object_list %}
+        {% for ingreso in object_list %}
+		<tr>
+			<td>{{ ingreso.id }}</td>
+			<td>{{ ingreso.Proveedor}}</td>
+            <td>{{ ingreso.Producto }}</td>
+			<td>{{ ingreso.PrecioCompra }}</td>
+            <td>{{ ingreso.FechaIngreso}}</td>
+
+            <td>
+                <a class="btn btn-primary" href="{% url 'almacenIndex:almacen_editar' ingreso.id %}">Editar</a>
+                <a class="btn btn-danger" href="{% url 'almacenIndex:almacen_eliminar' ingreso.id %}">Eliminar</a>
+            </td>
+		</tr>
+        {% endfor %}
+        {% else %}
+        <h1>No hay registros</h1>
+        {% endif %}
+	</tbody>
+</table>
+{% endblock%}
