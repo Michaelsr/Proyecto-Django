@@ -15,9 +15,13 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.contrib.auth.views import login
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^almacen/', include('proyecto.Apps.Almacen.urls', namespace="almacenIndex")),
-    url(r'^venta', include('proyecto.Apps.Venta.urls', namespace="ventaIndex")),
+    url(r'^venta/', include('proyecto.Apps.Venta.urls', namespace="ventaIndex")),
+    url(r'^usuario/', include('proyecto.Apps.Usuario.urls', namespace="usuarioIndex")),
+    url(r'^$', login,{'template_name':'index.html'}, name="login"),
+
 ]
