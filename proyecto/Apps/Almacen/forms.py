@@ -1,5 +1,6 @@
 from django import forms
 from proyecto.Apps.Almacen.models import Ingreso
+from proyecto.Apps.Almacen.models import Proveedor
 
 class IngresoForm(forms.ModelForm):
     class Meta:
@@ -23,3 +24,4 @@ class IngresoForm(forms.ModelForm):
             'PrecioCompra': forms.TextInput(attrs={'class':'form-control'}),
             'FechaIngreso': forms.DateInput(attrs={'class':'form-control'}),
         }
+

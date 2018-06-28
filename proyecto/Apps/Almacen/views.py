@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.core.urlresolvers import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from proyecto.Apps.Almacen.forms import IngresoForm
-from proyecto.Apps.Almacen.models import Ingreso
+from proyecto.Apps.Almacen.models import Ingreso, Proveedor
 
 
 # Create your views here.
@@ -67,3 +67,13 @@ class AlmacenDelete(DeleteView):
     form_class = IngresoForm
     template_name = 'almacen/almacen_delete.html'
     success_url = reverse_lazy('almacenIndex:almacen_listar')
+
+
+
+
+
+
+
+
+
+
